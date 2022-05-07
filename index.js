@@ -68,6 +68,10 @@ async function init() {
 
     console.log(data)
 
+    const html = await generateHTML(data);
+
+    await fs.writeFile("index.html", html)
+
 
   } catch (err) {
     console.log(err);
