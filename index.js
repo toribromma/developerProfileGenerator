@@ -1,3 +1,6 @@
+const template = require("./generateHTML");
+const {green, blue, pink, red} = template.colors;
+const generateHTML = template.generateHTML
 const questions = [
   {
     type: "input",
@@ -14,6 +17,9 @@ const questions = [
 
 function writeToFile(fileName, data) {}
 
-async function init() {}
+async function init() {
+console.log(green);
+console.log(generateHTML)
+}
 
 init();
