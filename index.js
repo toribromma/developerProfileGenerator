@@ -1,9 +1,9 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
-const fs = require("fs");
+const fs = require("fs").promises;
 const util = require("util");
 const template = require("./generateHTML");
-const { green, blue, pink, red } = template.colors;
+// const { green, blue, pink, red } = template.colors;
 const generateHTML = template.generateHTML;
 const questions = [
   {
@@ -28,7 +28,7 @@ function getUserInfo(username) {
   return axios.get(queryUrl);
 }
 
-function writeToFile(fileName, data) {}
+// const writeFileAsync = util.promisfy(fs.writeFile)
 
 async function init() {
   //   console.log(green);
@@ -51,18 +51,22 @@ async function init() {
       followers,
       following,
     } = res.data;
+    
+    const data = {
+        avatar_url: avatar_url,
+        name: name,
+        location: location,
+        html_url: html_url,
+        blog: blog,
+        bio: bio,
+        public_repos: public_repos,
+        followers: followers,
+        following: following,
+        color: color
 
-    console.log(
-      avatar_url,
-      name,
-      location,
-      html_url,
-      blog,
-      bio,
-      public_repos,
-      followers,
-      following
-    );
+    }
+
+    console.log(data)
 
 
   } catch (err) {
