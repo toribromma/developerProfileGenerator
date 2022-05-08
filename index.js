@@ -3,8 +3,13 @@ const axios = require("axios");
 const fs = require("fs").promises;
 const util = require("util");
 const template = require("./generateHTML");
-// const { green, blue, pink, red } = template.colors;
+var pdf = require('html-pdf');
+var config = {
+    height: "800px",
+    width: "600px"
+}
 const generateHTML = template.generateHTML;
+
 const questions = [
   {
     type: "input",
@@ -28,6 +33,13 @@ function getUserInfo(username) {
   return axios.get(queryUrl);
 }
 
+function getStars(username) {
+  const queryUrl = `https://api.github.com/users/${username}/repos`;
+  return axios.get(queryUrl)
+
+
+}
+
 // const writeFileAsync = util.promisfy(fs.writeFile)
 
 async function init() {
@@ -39,6 +51,16 @@ async function init() {
     // console.log(answers);
     const { username, color } = answers;
     const res = await getUserInfo(username);
+    const repData = await getStars(username);
+
+    console.log(repData.data)
+    let starCount = 0;
+
+    for (let index = 0; index < repData.data.length; index++) {
+      let count = repData.data[index].stargazers_count;
+      starCount = starCount + count;
+    }
+
     // console.log(data);
     const {
       avatar_url,
@@ -62,15 +84,23 @@ async function init() {
         public_repos: public_repos,
         followers: followers,
         following: following,
-        color: color
-
+        color: color,
+        starCount: starCount
     }
 
-    console.log(data)
+    // console.log(data)
 
     const html = await generateHTML(data);
 
     await fs.writeFile("index.html", html)
+
+    const readHtml = await fs.readFile("index.html", "utf8")
+
+    pdf.create(readHtml, config).toFile("./profile.pdf", function(err,res) {
+        if(err) {
+            throw err;
+        }
+    })
 
 
   } catch (err) {

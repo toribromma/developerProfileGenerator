@@ -83,6 +83,7 @@ function generateHTML(data) {
          }
          h5 {
          font-size: 1.3em;
+         text-align: center;
          }
          h6 {
          font-size: 1.2em;
@@ -171,66 +172,55 @@ function generateHTML(data) {
           } 
          }
       </style>
-      <body>
-      <div class="container">
-        <div class="wrapper">
-          <div class="photo-header">
-            <img src="${data.avatar_url}" />
-            <h1>Hi!</h1>
-            <h2>My name is ${data.name}</h2>
-            <h5>Currently at ${data.location}</h5>
-            <ul class="links-nav">
-              <li class="nav-link"><a>${data.location}</a></li>
-              <li class="nav-link"><a href="${data.html_url}">Github</a></li>
-              <li class="nav-link"><a href="${data.blog}">Blog</a></li>
-            </ul>
-          </div>
-        </div>
+      <body class="wrapper">
+        <header class="photo-header">
+          <img src="${data.avatar_url}" />
+          <h1>Hi!</h1>
+          <h2>My name is ${data.name}</h2>
+          <h2>Currently at ${data.location}</h2>
+          <ul class="links-nav">
+            <li class="nav-link"><a href="https://www.google.com/maps/place/${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a></li>
+            <li class="nav-link"><a href="${data.html_url}"><i class="fab fa-github"></i> GitHub</a></li>
+            <li class="nav-link"><a href="${data.blog}"><i class="fas fa-rss-square"></i> Blog</a></li>
+          </ul>
+      </header>
       </div>
-  
-      <div class="container">
+      <main class="container">
         <div class="row">
           <div class="col">
-            <h3>${data.bio}</h3>
+            <h4>${data.bio}</h4>
           </div>
         </div>
-      </div>
-  
-      <div class="container">
         <div class="row">
           <div class="col">
             <div class="card">
-              <h3>Public Repositories</h3>
-              <h4>${data.public_repos}</h4>
+              <h4>Public Repositories</h4>
+              <h5>${data.public_repos}</h5>
             </div>
           </div>
           <div class="col">
             <div class="card">
-              <h3>Followers</h3>
-              <h4>${data.followers}</h4>
+              <h4>Followers</h4>
+              <h5>${data.followers}</h5>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col">
             <div class="card">
-              <h3>GitHub Stars</h3>
-              <h4>100</h4>
+              <h4>GitHub Stars</h4>
+              <h5>${data.starCount}</h5>
             </div>
           </div>
           <div class="col">
             <div class="card">
-              <h3>Following</h3>
-              <h4>${data.following}</h4>
+              <h4>Following</h4>
+              <h5>${data.following}</h5>
             </div>
           </div>
-        </div>
-      </div>
-    </body>
-  
-    <div class="wrapper"></div>
-  </html>
-     </html>
+        </main>
+  </body>
+</html>
       `;
 }
 
