@@ -24,7 +24,7 @@
          height: 100%;
          }
          .wrapper {
-         background-color: #E6E1C3;
+         background-color: #DE9967;
          padding-top: 100px;
          }
          body {
@@ -67,8 +67,8 @@
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: #C1C72C;
-         color: black;
+         background-color: #870603;
+         color: white;
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -79,10 +79,13 @@
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid black;
+         border: 6px solid white;
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
          }
-         .photo-header h1, .photo-header h2 {
+         .photo-header h1, .photo-header h2, .photo-header h5 {
          width: 100%;
          text-align: center;
          }
@@ -111,25 +114,24 @@
          padding-right: 100px;
          }
 
-         .row {
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: space-between;
-           margin-top: 20px;
-           margin-bottom: 20px;
+         .row:after {
+          content: "";
+          display: table;
+          clear: both;
          }
 
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: #C1C72C;
-           color: black;
+           background-color: #870603;
+           color: white;
            margin: 20px;
          }
          
          .col {
-         flex: 1;
-         text-align: center;
+          float: left;
+          width: 50%;
+          text-align: center;
          }
 
          a, a:hover {
@@ -146,10 +148,10 @@
       </style>
       <body class="wrapper">
         <header class="photo-header">
-          <img src="https://avatars.githubusercontent.com/u/54513755?v=4" />
+          <img src="https://avatars.githubusercontent.com/u/54513755?v=4"/>
           <h1>Hi!</h1>
-          <h2>My name is toribromma</h2>
-          <h3>Currently at Orange, CA</h3>
+          <h2>My name is Tori Bromma <br> </h2>
+          <h5>Currently at Orange, CA</h5>
           <ul class="links-nav">
             <li class="nav-link"><a href="https://www.google.com/maps/place/Orange, CA"><i class="fas fa-location-arrow"></i> Orange, CA</a></li>
             <li class="nav-link"><a href="https://github.com/toribromma"><i class="fab fa-github"></i> GitHub</a></li>
@@ -158,12 +160,8 @@
       </header>
       </div>
       <main class="container">
-        <div class="row">
-          <div class="col">
             <h4>Full Stack Web Developer - HTML, CSS, Javascript,  Node, Express, MongoDB, Mongoose, IndexDB, MYSQL, React.JS, Handlebars.js.
 </h4>
-          </div>
-        </div>
         <div class="row">
           <div class="col">
             <div class="card">

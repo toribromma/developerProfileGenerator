@@ -3,11 +3,11 @@ const axios = require("axios");
 const fs = require("fs").promises;
 const util = require("util");
 const template = require("./generateHTML");
-var pdf = require('html-pdf');
+var pdf = require("html-pdf");
 var config = {
-    height: "800px",
-    width: "600px"
-}
+  height: "800px",
+  width: "600px",
+};
 const generateHTML = template.generateHTML;
 
 const questions = [
@@ -35,9 +35,7 @@ function getUserInfo(username) {
 
 function getStars(username) {
   const queryUrl = `https://api.github.com/users/${username}/repos`;
-  return axios.get(queryUrl)
-
-
+  return axios.get(queryUrl);
 }
 
 // const writeFileAsync = util.promisfy(fs.writeFile)
@@ -53,7 +51,7 @@ async function init() {
     const res = await getUserInfo(username);
     const repData = await getStars(username);
 
-    console.log(repData.data)
+    console.log(repData.data);
     let starCount = 0;
 
     for (let index = 0; index < repData.data.length; index++) {
@@ -73,36 +71,34 @@ async function init() {
       followers,
       following,
     } = res.data;
-    
+
     const data = {
-        avatar_url: avatar_url,
-        name: name,
-        location: location,
-        html_url: html_url,
-        blog: blog,
-        bio: bio,
-        public_repos: public_repos,
-        followers: followers,
-        following: following,
-        color: color,
-        starCount: starCount
-    }
+      avatar_url: avatar_url,
+      name: name,
+      location: location,
+      html_url: html_url,
+      blog: blog,
+      bio: bio,
+      public_repos: public_repos,
+      followers: followers,
+      following: following,
+      color: color,
+      starCount: starCount,
+    };
 
     // console.log(data)
 
     const html = await generateHTML(data);
 
-    await fs.writeFile("index.html", html)
+    await fs.writeFile("index.html", html);
 
-    const readHtml = await fs.readFile("index.html", "utf8")
+    const readHtml = await fs.readFile("index.html", "utf8");
 
-    pdf.create(readHtml, config).toFile("./profile.pdf", function(err,res) {
-        if(err) {
-            throw err;
-        }
-    })
-
-
+    pdf.create(readHtml, config).toFile("./profile.pdf", function (err, res) {
+      if (err) {
+        throw err;
+      }
+    });
   } catch (err) {
     console.log(err);
   }

@@ -109,8 +109,11 @@ function generateHTML(data) {
          margin-top: -75px;
          border: 6px solid ${colors[data.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
          }
-         .photo-header h1, .photo-header h2 {
+         .photo-header h1, .photo-header h2, .photo-header h5 {
          width: 100%;
          text-align: center;
          }
@@ -139,12 +142,10 @@ function generateHTML(data) {
          padding-right: 100px;
          }
 
-         .row {
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: space-between;
-           margin-top: 20px;
-           margin-bottom: 20px;
+         .row:after {
+          content: "";
+          display: table;
+          clear: both;
          }
 
          .card {
@@ -156,8 +157,9 @@ function generateHTML(data) {
          }
          
          .col {
-         flex: 1;
-         text-align: center;
+          float: left;
+          width: 50%;
+          text-align: center;
          }
 
          a, a:hover {
@@ -174,23 +176,25 @@ function generateHTML(data) {
       </style>
       <body class="wrapper">
         <header class="photo-header">
-          <img src="${data.avatar_url}" />
+          <img src="${data.avatar_url}"/>
           <h1>Hi!</h1>
-          <h2>My name is ${data.name}</h2>
-          <h2>Currently at ${data.location}</h2>
+          <h2>My name is ${data.name} <br> </h2>
+          <h5>Currently at ${data.location}</h5>
           <ul class="links-nav">
-            <li class="nav-link"><a href="https://www.google.com/maps/place/${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a></li>
-            <li class="nav-link"><a href="${data.html_url}"><i class="fab fa-github"></i> GitHub</a></li>
-            <li class="nav-link"><a href="${data.blog}"><i class="fas fa-rss-square"></i> Blog</a></li>
+            <li class="nav-link"><a href="https://www.google.com/maps/place/${
+              data.location
+            }"><i class="fas fa-location-arrow"></i> ${data.location}</a></li>
+            <li class="nav-link"><a href="${
+              data.html_url
+            }"><i class="fab fa-github"></i> GitHub</a></li>
+            <li class="nav-link"><a href="${
+              data.blog
+            }"><i class="fas fa-rss-square"></i> Blog</a></li>
           </ul>
       </header>
       </div>
       <main class="container">
-        <div class="row">
-          <div class="col">
             <h4>${data.bio}</h4>
-          </div>
-        </div>
         <div class="row">
           <div class="col">
             <div class="card">
