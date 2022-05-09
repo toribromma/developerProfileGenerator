@@ -41,7 +41,9 @@ voila!
 converts to html and then to PDF.
 
 ## Finished product
-(/profile.pdf).
+
+
+![pdf](/profile.pdf)
 
 ## Business Context
 
