@@ -32,7 +32,16 @@ I WANT a developer profile generator
 SO THAT I can easily prepare reports for stakeholders
 ```
 
-Refer to the [design mockup](./Assets/09-NodeJS-homework-demo.pdf).
+## How to
+git clone project
+open terminal in main folder
+node index.js
+type in username and color
+voila!
+converts to html and then to PDF.
+
+## Finished product
+(/profile.pdf).
 
 ## Business Context
 
